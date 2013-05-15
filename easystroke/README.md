@@ -2,7 +2,7 @@ easystroke
 ==========
 Описание
 --------
-Набор жестов [easystroke](http://sourceforge.net/apps/trac/easystroke/wiki easystroke).
+Набор жестов [easystroke](http://sourceforge.net/apps/trac/easystroke/wiki "easystroke").
 
 Установка
 ---------

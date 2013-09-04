@@ -37,6 +37,36 @@ xterm*|rxvt*)
 esac
 
 # Alias definitions.
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias pl='ps -Al'
+alias px='ps aux'
+
+alias gitpl='git pull --rebase'
+alias gitad='git add .'
+alias gitco='git commit'
+alias gitps='git push'
+alias gitadco='git add . && git commit'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -52,3 +82,28 @@ fi
 
 # correct path
 shopt -sq cdspell
+
+
+# command "unpack"
+# @see http://habrahabr.ru/post/158271/
+unpack ()
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)  tar xvjf $1    ;;
+            *.tar.gz)   tar xvzf $1    ;;
+            *.tar.xz)   tar xvJf $1    ;;
+            *.bz2)      bunzip2 $1     ;;
+            *.rar)      unrar x $1     ;;
+            *.gz)       gunzip $1      ;;
+            *.tar)      tar xvf $1     ;;
+            *.tbz2)     tar xvjf $1    ;;
+            *.tgz)      tar xvzf $1    ;;
+            *.zip)      unzip $1       ;;
+            *.xz)       unxz $1        ;;
+            *)          echo "'$1': Unknown method of file compression"  ;;
+        esac
+        else
+            echo "'$1' not found"
+    fi
+}

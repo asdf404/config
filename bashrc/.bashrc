@@ -73,6 +73,8 @@ alias recdesktop='ffmpeg -f x11grab -s 1920x1080 -r 8 -i :0.0 -sameq '
 
 # Start VM in headless mode
 alias startvm='VBoxManage startvm $1 --type headless'
+# Save VM state
+alias savevm='VBoxManage controlvm $1 savestate'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases

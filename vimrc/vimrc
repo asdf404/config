@@ -2,3 +2,11 @@ set nocp
 set number
 set ruler
 set laststatus=2
+
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+autocmd vimenter * NERDTree
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
